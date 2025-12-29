@@ -206,76 +206,265 @@
 // In Stock + Sale (both conditions)
 
 
-// Test each filter by manually changing which array to display
-import './App.css';
-// import UserCard from './userCard.js';
-import ProductCard from './ProductCard.js'
-function App() {
-  const productDetails = [
-    {
-      id: 1,
-      name: "wooden chair",
-      price: 29.99,
-      category: "chair",
-      inStock: true, 
-      discount: 10,
-      rating: 4.5
-    },
-    {
-      id: 2,
-      name: "wooden Table",
-      price: 59.99,
-      category: "Table",
-      inStock: true, 
-      discount: 10,
-      rating: 4.7
-    },
-    {
-      id: 3,
-      name: "wooden cot",
-      price: 89.99,
-      category: "Bed",
-      inStock: false, 
-      discount: 15,
-      rating: 3.9
-    },
-    {
-      id: 4,
-      name: "plastic chair",
-      price: 19.99,
-      category: "chair",
-      inStock: false, 
-      discount:18,
-      rating: 4.2
-    },
+// // Test each filter by manually changing which array to display
+// import './App.css';
+// // import UserCard from './userCard.js';
+// import ProductCard from './ProductCard.js'
+// function App() {
+//   const productDetails = [
+//     {
+//       id: 1,
+//       name: "wooden chair",
+//       price: 29.99,
+//       category: "chair",
+//       inStock: true, 
+//       discount: 10,
+//       rating: 4.5
+//     },
+//     {
+//       id: 2,
+//       name: "wooden Table",
+//       price: 59.99,
+//       category: "Table",
+//       inStock: true, 
+//       discount: 10,
+//       rating: 4.7
+//     },
+//     {
+//       id: 3,
+//       name: "wooden cot",
+//       price: 89.99,
+//       category: "Bed",
+//       inStock: false, 
+//       discount: 15,
+//       rating: 3.9
+//     },
+//     {
+//       id: 4,
+//       name: "plastic chair",
+//       price: 19.99,
+//       category: "chair",
+//       inStock: false, 
+//       discount:18,
+//       rating: 4.2
+//     },
 
-  ]
-  const instock = productDetails.filter(item => item.inStock)
-  const discountAvailable = productDetails.filter(item => item.discount > 0)
-  const instockanddiscount = productDetails.filter(item => item.inStock && item.discount > 0)
-  return (
+//   ]
+//   const instock = productDetails.filter(item => item.inStock)
+//   const discountAvailable = productDetails.filter(item => item.discount > 0)
+//   const instockanddiscount = productDetails.filter(item => item.inStock && item.discount > 0)
+//   return (
     
-    <div className = "productCard">
-      <div className = "buttons">
-        <button>in Stock ({instock.length})</button>
-        <button>discount</button>
-        <button>discountandinstock</button>
-      </div>
-      {
-        productDetails.map(productDetails =>
+//     <div className = "productCard">
+//       <div className = "buttons">
+//         <button>in Stock ({instock.length})</button>
+//         <button>discount</button>
+//         <button>discountandinstock</button>
+//       </div>
+//       {
+//         productDetails.map(productDetails =>
+//         <ProductCard
+//         key = {productDetails.id}
+//         name = {productDetails.name}
+//         price = {productDetails.price}
+//         category = {productDetails.category}
+//         inStock = {productDetails.inStock}
+//         discount = {productDetails.discount}
+//         rating = {productDetails.rating}
+//         />
+//       )}
+//     </div>
+//   )
+// }
+// export default App;
+
+
+//Day - 3 use state 
+import './App.css';
+import ProductCard from './ProductCard';
+import { useState } from 'react';
+
+function App() {
+  // const productDetails = [
+  //    {
+  //     id: 1,
+  //     name: "wooden chair",
+  //     price: 29.99,
+  //     category: "chair",
+  //     inStock: true, 
+  //     discount: 10,
+  //     rating: 4.5
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "wooden Table",
+  //     price: 59.99,
+  //     category: "Table",
+  //     inStock: true, 
+  //     discount: 10,
+  //     rating: 4.7
+  //   },
+  //   {
+  //     id: 3,
+  //     name: "wooden cot",
+  //     price: 89.99,
+  //     category: "Bed",
+  //     inStock: false, 
+  //     discount: 15,
+  //     rating: 3.9
+  //   },
+  //   {
+  //     id: 4,
+  //     name: "plastic chair",
+  //     price: 19.99,
+  //     category: "chair",
+  //     inStock: false, 
+  //     discount:18,
+  //     rating: 4.2
+  //   }
+  // ]
+  // const allProducts = productDetails.map(item => item);
+  // const inStockProducts = productDetails.filter(item => item.inStock)
+  // const discountProducts = productDetails.filter(item => item.discount > 0)
+  // const discountAndInstock = productDetails.filter(item => item.discount > 0 && item.inStock)
+  // const [current, setcurrent] = productDetails.useState("allProducts");
+  // return (
+    
+  //   <div className="App">
+  //     <div className = "buttons">
+  //       <button className = {current === "allProducts" ? "active" : ""}>all products</button>
+  //       <button className = {current === "discount" ? "active" : ""}>discount</button>
+  //       <button className = {current === "instock" ? "active" : ""}>instock</button>
+  //       <button className = {current === "instockdiscount" ? "active" : ""}>discount instock</button>
+  //     </div>
+  //     {
+  //     if (current === "allProducts") }
+  //     {
+  //     productDetails.map(item => 
+  //       <ProductCard
+  //       key = {item.id}
+  //       name = {item.name}
+  //       price = {item.price}
+  //       category = {item.category}
+  //       inStock = {item.inStock}
+  //       discount = {item.discount}
+  //       rating = {item.rating}
+  //       />
+  //     )
+  //     }
+      
+  //   </div>
+  // );
+  // const [current, setCurrent] = useState(0)
+  // return (
+  //   <div className = "App">
+  //     <button className = "increase" onClick = {() => setCurrent(current+1)}>click me to increase!</button>
+  //     <button className = "decrease" onClick = {() => current != 0 ? setCurrent(current-1): setCurrent(0)}>click me to decrease!</button>
+  //     <button className = "reset" onClick = {() => setCurrent(0)}>click me to reset!</button>
+  //     {current}
+  //   </div>
+  // )
+
+  // const [current, setCurrent] = useState(true)
+  // return (
+  //   <div className = "App">
+  //     <button className = {current === true ? "green":"gray"}
+  //     onClick={() => current === true ? setCurrent(false):setCurrent(true)}
+  //     >{current === true ? "on":"off"}</button>
+  //   </div>
+  // )
+
+  // const [current, setCurrent] = useState("")
+  // return (
+  //   <div className = "App">
+  //     <input value = {current} onChange={(e) => setCurrent(e.target.value)} > 
+  //     </input>
+  //     <p>hello {current || "stranger"}</p>
+  //   </div>
+  // )
+
+
+// const [current, setCurrent] = useState("hide")
+  // return (
+  //   <div className ="App">
+  //     <p>{productDetails.name} </p>
+  //     <p>{productDetails.price} </p>
+  //     <div className = {current === "show" ? "show" : "hide"}>
+  //       <p>{productDetails.category} </p>
+  //       <p>{productDetails.rating} </p>
+  //       <p>{productDetails.status} </p>
+  //     </div>
+  //     <button className = "button" onClick={() => current === "show" ? setCurrent("hide") : setCurrent("show")}>{current === "show" ? "hide info" : "more info"}</button>
+  //   </div>
+  // )
+  const productDetails = [
+   { id : 1,
+    name : "wooden chair",
+    price : 79.99,
+    category : "chair",
+    status : true,
+    discount : 10,
+    rating : 4.5,
+   },
+   { id : 2,
+    name : "wooden table",
+    price : 89.99,
+    category : "table",
+    status : true,
+    discount : 0,
+    rating : 4.7,
+   },
+   { id : 3,
+    name : "wooden bed",
+    price : 129.99,
+    category : "bed",
+    status : false,
+    discount : 0,
+    rating : 4.5,
+   },
+   { id : 4,
+    name : "wooden bench",
+    price : 89.99,
+    category : "table",
+    status : false,
+    discount : 10,
+    rating : 4.9,
+   }
+  ]
+  let showproducts = []
+  const [current, setCurrent] = useState("allproducts")
+  if(current === "allproducts"){
+     showproducts = productDetails.map(item => item)
+  }
+  if(current === "instock"){
+     showproducts = productDetails.filter(item => item.status)
+  }
+  if(current === "discount"){
+     showproducts = productDetails.filter(item => item.discount > 0)
+  }
+  if(current === "discountinstock"){
+     showproducts = productDetails.filter(item => item.status && item.discount > 0)
+  }
+  return (
+    <div className = "App">
+       <button className = {current === "allproducts" ? "clicked" : ""} onClick={() => setCurrent("allproducts")}>all products</button>
+       <button className = {current === "instock" ? "clicked" : ""} onClick={() => setCurrent("instock")}>in stock</button>
+       <button className = {current === "discount" ? "clicked" : ""} onClick={() => setCurrent("discount")}>discount</button>
+       <button className = {current === "discountinstock" ? "clicked" : ""} onClick={() => setCurrent("discountinstock")}>discount instock</button>
+
+
+      <div className = "products">
+        {showproducts.map(item =>
         <ProductCard
-        key = {productDetails.id}
-        name = {productDetails.name}
-        price = {productDetails.price}
-        category = {productDetails.category}
-        inStock = {productDetails.inStock}
-        discount = {productDetails.discount}
-        rating = {productDetails.rating}
+        key = {item.id} {...item}
         />
-      )}
+        )}
+      </div>
+      
     </div>
   )
 }
+
 export default App;
 
 

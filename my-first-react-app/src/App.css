@@ -39,6 +39,7 @@
 
 .App {
   padding: 20px;
+  /* display: flex; */
 }
 
 .userCard {
@@ -78,4 +79,22 @@
 .badge.inactive {
   background-color: #f0f0f0;
   color: #7f8c8d;
+}
+.App .buttons .active{
+  display : flex;
+}
+.green {
+  background-color: greenyellow;
+}
+.gray{
+  background-color: gray;
+}
+.show{
+  display: flex;
+}
+.hide{
+  display: none;
+}
+.clicked{
+  background-color: red;
 }
