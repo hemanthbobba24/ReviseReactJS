@@ -280,11 +280,11 @@
 
 
 //Day - 3 use state 
-import './App.css';
-import ProductCard from './ProductCard';
-import { useState } from 'react';
+// import './App.css';
+// import ProductCard from './ProductCard';
+// import { useState } from 'react';
 
-function App() {
+// function App() {
   // const productDetails = [
   //    {
   //     id: 1,
@@ -397,75 +397,90 @@ function App() {
   //     <button className = "button" onClick={() => current === "show" ? setCurrent("hide") : setCurrent("show")}>{current === "show" ? "hide info" : "more info"}</button>
   //   </div>
   // )
-  const productDetails = [
-   { id : 1,
-    name : "wooden chair",
-    price : 79.99,
-    category : "chair",
-    status : true,
-    discount : 10,
-    rating : 4.5,
-   },
-   { id : 2,
-    name : "wooden table",
-    price : 89.99,
-    category : "table",
-    status : true,
-    discount : 0,
-    rating : 4.7,
-   },
-   { id : 3,
-    name : "wooden bed",
-    price : 129.99,
-    category : "bed",
-    status : false,
-    discount : 0,
-    rating : 4.5,
-   },
-   { id : 4,
-    name : "wooden bench",
-    price : 89.99,
-    category : "table",
-    status : false,
-    discount : 10,
-    rating : 4.9,
-   }
-  ]
-  let showproducts = []
-  const [current, setCurrent] = useState("allproducts")
-  if(current === "allproducts"){
-     showproducts = productDetails.map(item => item)
-  }
-  if(current === "instock"){
-     showproducts = productDetails.filter(item => item.status)
-  }
-  if(current === "discount"){
-     showproducts = productDetails.filter(item => item.discount > 0)
-  }
-  if(current === "discountinstock"){
-     showproducts = productDetails.filter(item => item.status && item.discount > 0)
-  }
-  return (
-    <div className = "App">
-       <button className = {current === "allproducts" ? "clicked" : ""} onClick={() => setCurrent("allproducts")}>all products</button>
-       <button className = {current === "instock" ? "clicked" : ""} onClick={() => setCurrent("instock")}>in stock</button>
-       <button className = {current === "discount" ? "clicked" : ""} onClick={() => setCurrent("discount")}>discount</button>
-       <button className = {current === "discountinstock" ? "clicked" : ""} onClick={() => setCurrent("discountinstock")}>discount instock</button>
+//   const productDetails = [
+//    { id : 1,
+//     name : "wooden chair",
+//     price : 79.99,
+//     category : "chair",
+//     status : true,
+//     discount : 10,
+//     rating : 4.5,
+//    },
+//    { id : 2,
+//     name : "wooden table",
+//     price : 89.99,
+//     category : "table",
+//     status : true,
+//     discount : 0,
+//     rating : 4.7,
+//    },
+//    { id : 3,
+//     name : "wooden bed",
+//     price : 129.99,
+//     category : "bed",
+//     status : false,
+//     discount : 0,
+//     rating : 4.5,
+//    },
+//    { id : 4,
+//     name : "wooden bench",
+//     price : 89.99,
+//     category : "table",
+//     status : false,
+//     discount : 10,
+//     rating : 4.9,
+//    }
+//   ]
+//   let showproducts = []
+//   const [current, setCurrent] = useState("allproducts")
+//   if(current === "allproducts"){
+//      showproducts = productDetails.map(item => item)
+//   }
+//   if(current === "instock"){
+//      showproducts = productDetails.filter(item => item.status)
+//   }
+//   if(current === "discount"){
+//      showproducts = productDetails.filter(item => item.discount > 0)
+//   }
+//   if(current === "discountinstock"){
+//      showproducts = productDetails.filter(item => item.status && item.discount > 0)
+//   }
+//   return (
+//     <div className = "App">
+//        <button className = {current === "allproducts" ? "clicked" : ""} onClick={() => setCurrent("allproducts")}>all products</button>
+//        <button className = {current === "instock" ? "clicked" : ""} onClick={() => setCurrent("instock")}>in stock</button>
+//        <button className = {current === "discount" ? "clicked" : ""} onClick={() => setCurrent("discount")}>discount</button>
+//        <button className = {current === "discountinstock" ? "clicked" : ""} onClick={() => setCurrent("discountinstock")}>discount instock</button>
 
 
-      <div className = "products">
-        {showproducts.map(item =>
-        <ProductCard
-        key = {item.id} {...item}
-        />
-        )}
-      </div>
+//       <div className = "products">
+//         {showproducts.map(item =>
+//         <ProductCard
+//         key = {item.id} {...item}
+//         />
+//         )}
+//       </div>
       
+//     </div>
+//   )
+// }
+
+// export default App;
+
+
+// src/App.js
+import './App.css'
+import Day4 from './practice/Day4'
+
+function App() {
+  return (
+    <div className="App">
+      <Day4 />
     </div>
   )
 }
 
-export default App;
+export default App
 
 
 
